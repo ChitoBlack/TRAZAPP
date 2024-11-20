@@ -1,0 +1,56 @@
+<ion-header>
+</ion-header>
+
+<ion-content class="page-login">
+  <!-- Contenedor del Swiper -->
+  <div class="swiper-container">
+    <swiper-container [slidesPerView]="1" [spaceBetween]="10" [pagination]="{ clickable: true }">
+      <swiper-slide *ngFor="let image of slideImages" class="slide">
+        <img [src]="image" alt="Slide Image" class="slide-image" />
+      </swiper-slide>
+    </swiper-container>
+    <div class="app-title">
+      <h2>TrazApp</h2>
+    </div>
+  </div>
+
+  <!-- Contenedor del formulario de login -->
+  <div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <!-- Campo de Correo Electrónico -->
+      <ion-item class="input-item">
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        El correo es obligatorio y debe ser válido.
+      </ion-text>
+
+      <!-- Campo de Contraseña -->
+      <ion-item class="input-item ion-margin-top">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        La contraseña es obligatoria y debe tener al menos 8 caracteres.
+      </ion-text>
+
+      <!-- Nota opcional sobre el tipo de cuenta -->
+      <div class="info-text ion-margin-top">
+        <ion-text color="medium">
+          <small>El sistema reconocerá automáticamente el tipo de cuenta (Administrador o Estudiante).</small>
+        </ion-text>
+      </div>
+
+      <!-- Botón de Inicio de Sesión -->
+      <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="btn-login">
+        Iniciar Sesión
+      </ion-button>
+    </form>
+
+    <!-- Enlace para registrarse -->
+    <div class="register-link ion-text-center ion-margin-top">
+      <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+    </div>
+  </div>
+</ion-content>

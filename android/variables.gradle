@@ -1,0 +1,23 @@
+ext {
+    minSdkVersion = 26
+    compileSdkVersion = 34
+    targetSdkVersion = 34
+    googleMapsPlayServicesVersion = '18.2.0'
+    googleMapsUtilsVersion = '3.8.2'
+    googleMapsKtxVersion = '5.0.0'
+    googleMapsUtilsKtxVersion = '5.0.0'
+    androidxCoreKTXVersion = '1.12.0'
+    kotlinxCoroutinesVersion = '1.7.3'
+    kotlin_version = '1.9.10'
+    androidxActivityVersion = '1.8.0'
+    androidxAppCompatVersion = '1.6.1'
+    androidxCoordinatorLayoutVersion = '1.2.0'
+    androidxCoreVersion = '1.12.0'
+    androidxFragmentVersion = '1.6.2'
+    coreSplashScreenVersion = '1.0.1'
+    androidxWebkitVersion = '1.9.0'
+    junitVersion = '4.13.2'
+    androidxJunitVersion = '1.1.5'
+    androidxEspressoCoreVersion = '3.5.1'
+    cordovaAndroidVersion = '10.1.1'
+}

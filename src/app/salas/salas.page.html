@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin-home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Salas Disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let sala of salas">
+      <ion-label>
+        <h2>{{ sala.nombre }}</h2>
+        <p [style.color]="sala.disponible ? 'green' : 'red'">
+          {{ sala.disponible ? 'Disponible' : 'No Disponible' }}
+        </p>
+      </ion-label>
+      <ion-button
+        *ngIf="sala.disponible"
+        color="success"
+        (click)="reservarSala(sala)"
+      >
+        Reservar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

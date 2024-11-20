@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil del Administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="adminData">
+    <ion-card-header>
+      <ion-card-title>{{ adminData.nombre }}</ion-card-title>
+      <ion-card-subtitle>Rol: {{ adminData.role }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Area:</strong> {{ adminData.area }}</p>
+      <p><strong>Asignatura:</strong> {{ adminData.asignatura }}</p>
+      <p><strong>Fecha de Nacimiento:</strong> {{ adminData.birthdate }}</p>
+      <p><strong>Email:</strong> {{ adminData.email }}</p>
+      <p><strong>Instituto:</strong> {{ adminData.institute }}</p>
+      <p><strong>Teléfono:</strong> {{ adminData.phone }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

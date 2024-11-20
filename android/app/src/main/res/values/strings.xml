@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MapApp</string>
+    <string name="title_activity_main">MapApp</string>
+    <string name="package_name">com.mapApp.app</string>
+    <string name="custom_url_scheme">com.mapApp.app</string>
+</resources>

@@ -1,0 +1,10 @@
+{
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "@ionic/angular/common",
+    "@ionic/angular/standalone"
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "cSpell.words": [
+    "plataform"
+  ]
+}

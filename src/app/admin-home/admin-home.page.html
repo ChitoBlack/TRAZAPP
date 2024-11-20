@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Gestión de Clases</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Sección del Cronómetro -->
+  <div class="cronometro-container ion-text-center">
+    <h2>Entrada/Salida</h2>
+    <p class="cronometro">
+      {{ minutos | number:'2.0' }}:{{ segundos | number:'2.0' }}
+    </p>
+  </div>
+  
+
+  <!-- Segmento para Generar o Escanear QR -->
+  <ion-segment [(ngModel)]="segment" mode="ios">
+    <ion-segment-button value="scan">
+      <ion-label>Scan QR</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="generate">
+      <ion-label>Generate QR</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Sección para Escanear QR -->
+  <div class="segment" *ngIf="segment === 'scan'">
+    <div class="segment-content">
+      <img src="../../assets/img/scan.png" alt="">
+      <h6 class="scan-label">Escanea el código QR para registrar entrada o salida</h6>
+      <ion-button (click)="startScan()" class="submit" expand="block">
+        Escanear
+        <ion-icon slot="end" name="scan-outline"></ion-icon>
+      </ion-button>
+
+      <ion-item class="result" *ngIf="scanResult" lines="none">
+        <ion-label>
+          <p>Resultado del Escaneo:</p>
+          <div>{{ scanResult }}</div>
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <!-- Sección para Generar QR -->
+  <div class="segment" *ngIf="segment === 'generate'">
+    <div class="segment-content">
+      <div id="qrImage">
+        <div class="d-flex-center">
+          <div class="d-flex-center qr-wrapper">
+            <qr-code [value]="qrValue" size="190" errorCorrectionLevel="M"></qr-code>
+          </div>
+        </div>
+        <p class="qr-instruction">Muestra este QR para registrar entrada o salida</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón flotante para abrir el historial -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="abrirHistorial()">
+      <ion-icon name="list-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Modal del Historial -->
+  <ion-modal [isOpen]="mostrarModal" (ionModalDidDismiss)="cerrarHistorial()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Historial de Clases</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="cerrarHistorial()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item *ngFor="let item of historial">
+            <ion-label>
+              <h2>Fecha: {{ item.fecha }}</h2>
+              <p>Hora de Entrada: {{ item.horaEntrada }}</p>
+              <p *ngIf="item.horaSalida">Hora de Salida: {{ item.horaSalida }}</p>
+              <p *ngIf="item.totalTiempo">Tiempo Total: {{ item.totalTiempo }}</p>
+              <p>Área: {{ item.area }}</p>
+            </ion-label>
+            <ion-button fill="clear" color="danger" (click)="eliminarRegistro(item.id)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

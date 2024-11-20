@@ -1,0 +1,52 @@
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  ion-button {
+    --border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  
+  .scanner-active {
+    background-color: transparent !important;
+    pointer-events: none;
+  }
+  
+  .scanner-active ion-content,
+  .scanner-active ion-header {
+    opacity: 0;
+  }
+
+  #qrImage{
+    padding: 20px 0;
+  }
+  
+  .qr-wrapper{
+    width: 230px;
+    min-height: 230px;
+    background: var(--ion-color-tertiary);
+    border-radius: 20px;
+  
+  }
+  .qr-placeholder{
+    width: 60px;
+  }
+  
+  .d-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .submit {
+    margin: 0 auto;
+  }
+
+  .img {
+    width: auto;
+    max-width: 50%;
+    height: auto;
+    max-height: 50%;
+  }

@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Botón de GPS en la barra superior derecha -->
+    <ion-buttons slot="end">
+        <ion-button (click)="onGpsClick()">
+        <ion-icon name="locate-outline"></ion-icon>
+        Mostrar Mapa
+        </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding ion-text-center">
+<ion-segment [(ngModel)]="segment" mode="ios">
+    <ion-segment-button value="scan">
+        <ion-label>Scan QR</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="generate">
+        <ion-label>Generate QR</ion-label>
+    </ion-segment-button>
+</ion-segment>
+
+<div class="segment" *ngIf="segment === 'scan'">
+    <div class="segment-content">
+        <div class="image-container">
+            <img src="../../assets/img/qr.png" alt="">
+            
+        </div>
+        <h6 class="scan-label">Escanea o genera una imagen de codigo QR</h6>
+        
+
+
+                <ion-button (click)="startScan() "class="submit" expand="block"  >
+                    Scan
+                    <ion-icon slot="end" name="scan-outline"></ion-icon>
+                </ion-button>
+    </div>
+</div>
+
+
+
+<div class="segment" *ngIf="segment === 'generate' ">
+    <div class="segment-content">
+        <div id="qrImage">
+            <div class="d-flex-center">
+                <div class="d-flex-center qr-wrapper">
+                    <qr-code [value]="qrData" size="200" errorCorrectionLevel="M"></qr-code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</ion-content>
+
+
+<!-- Contenedor del mapa -->
+<div>
+    <capacitor-google-map id="map" [apiKey]="apiKey"></capacitor-google-map>
+</div>
+

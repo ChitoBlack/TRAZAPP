@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Reservar Sala</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2 class="ion-text-center">Sala: {{ sala }}</h2>
+
+  <ion-item>
+    <ion-label>Hora de Inicio</ion-label>
+    <ion-datetime
+      [(ngModel)]="horaInicio"
+      presentation="time"
+      placeholder="Selecciona la hora de inicio"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Hora de Fin</ion-label>
+    <ion-datetime
+      [(ngModel)]="horaFin"
+      presentation="time"
+      placeholder="Selecciona la hora de término"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block" (click)="confirmarReserva()">Confirmar Reserva</ion-button>
+</ion-content>
